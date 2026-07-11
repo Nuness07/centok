@@ -1,0 +1,118 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Next.js
+.next/
+out/
+
+# Build outputs
+dist/
+build/
+
+# Turborepo and caches
+.turbo/
+.cache/
+.swc/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Test outputs
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+blob-report/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Local configuration files
+*.local
+.npmrc.local
+
+# Vercel
+.vercel/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime files
+*.pid
+*.pid.lock
+*.seed
+
+# Sensitive certificates and keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Local databases
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# IDEs and editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+*.code-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Package manager caches
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnpm-store/
+
+# Storybook
+storybook-static/
+
+# Sentry
+.sentryclirc
+
+# Local development tooling
+.devcontainer/local/
