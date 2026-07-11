@@ -20,12 +20,12 @@ export function ActivityHistory() {
   );
 
   return (
-    <section className="rounded-[20px] border border-white/[0.08] bg-[#11141A]/95 p-4 shadow-[0_24px_70px_rgb(0_0_0_/_18%)]">
+    <section className="rounded-[20px] border border-[#D7E4F4] bg-white p-4 shadow-[0_24px_70px_rgb(11_18_32_/_8%)]">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-lg font-bold text-white">Transaction history</h2>
-        <div className="flex rounded-full border border-white/[0.08] bg-white/[0.035] p-1">
+        <h2 className="text-lg font-bold text-[#111827]">Transaction history</h2>
+        <div className="flex rounded-full border border-[#D7E4F4] bg-[#F8FBFF] p-1">
           {(["all", "funding", "purchase"] as const).map((item) => (
-            <Button key={item} variant="ghost" className={cn("min-h-8 rounded-full border-0 px-3 text-xs", filter === item ? "bg-white text-text-dark hover:bg-white" : "text-[#8E98AA] hover:text-white")} onClick={() => setFilter(item)}>
+            <Button key={item} variant="ghost" className={cn("min-h-8 rounded-full border-0 px-3 text-xs", filter === item ? "bg-primary text-white hover:bg-primary" : "text-[#6F7A8F] hover:bg-white hover:text-[#111827]")} onClick={() => setFilter(item)}>
               {item === "all" ? "All" : item === "funding" ? "Funding" : "Purchases"}
             </Button>
           ))}

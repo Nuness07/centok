@@ -3,9 +3,11 @@ import { chartRanges } from "@/domain/models";
 import { cn } from "@/lib/cn";
 
 export function ChartRangeSelector({ range, onRangeChange }: { range: ChartRange; onRangeChange: (range: ChartRange) => void }) {
+  const visibleRanges = chartRanges.filter((item) => item !== "LIVE" && item !== "5D" && item !== "YTD");
+
   return (
-    <div className="flex flex-wrap gap-1 rounded-full border border-[#D7E4F4] bg-[#F6F9FF] p-1" aria-label="Chart range">
-      {chartRanges.map((item) => (
+    <div className="flex w-full gap-1 overflow-x-auto rounded-full border border-[#D7E4F4] bg-[#F6F9FF] p-1 md:w-auto md:flex-wrap" aria-label="Chart range">
+      {visibleRanges.map((item) => (
         <button
           key={item}
           type="button"

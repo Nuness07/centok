@@ -20,7 +20,7 @@ export function LightweightChartAdapter({ points, positive }: ChartAdapterProps)
   const latest = points.at(-1)?.value ?? "0";
 
   return (
-    <div className="relative h-[380px] w-full overflow-hidden rounded-[16px] border border-[#D7E4F4] bg-[#F8FBFF] p-3 [background-image:linear-gradient(rgb(184_200_224_/_38%)_1px,transparent_1px),linear-gradient(90deg,rgb(184_200_224_/_38%)_1px,transparent_1px)] [background-size:90px_72px]">
+    <div className="relative h-[260px] w-full overflow-hidden rounded-[14px] border border-[#D7E4F4] bg-[#F8FBFF] p-2 [background-image:linear-gradient(rgb(184_200_224_/_24%)_1px,transparent_1px),linear-gradient(90deg,rgb(184_200_224_/_24%)_1px,transparent_1px)] [background-size:76px_58px] md:h-[380px] md:rounded-[16px] md:p-3 md:[background-size:90px_72px]">
       <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full" role="img" aria-label="Mock price history chart">
         <defs>
           <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
@@ -29,9 +29,9 @@ export function LightweightChartAdapter({ points, positive }: ChartAdapterProps)
           </linearGradient>
         </defs>
         <path d={`${path} L${width},${height} L0,${height} Z`} fill="url(#chartFill)" />
-        <path d={path} fill="none" stroke="#D9CCB0" strokeWidth="2.6" strokeLinecap="round" />
+        <path d={path} fill="none" stroke="#D9CCB0" strokeWidth="2.3" strokeLinecap="round" />
       </svg>
-      <span className="absolute right-4 top-4 rounded-full border border-[#D7E4F4] bg-white px-3 py-1 text-xs font-semibold text-[#111827]">
+      <span className="absolute right-3 top-3 hidden rounded-full border border-[#D7E4F4] bg-white px-3 py-1 text-xs font-semibold text-[#111827] sm:inline-flex">
         Last <LocalizedMoneyDisplay money={{ amount: latest, currency: "USDT" }} className="inline-flex align-middle" localClassName="text-[#111827]" referenceClassName="hidden" hideReference />
       </span>
     </div>

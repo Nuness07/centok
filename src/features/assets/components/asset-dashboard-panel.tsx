@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, Star } from "lucide-react";
+import { ArrowLeft, ChartLine, Flame, Maximize, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { Asset, ChartRange } from "@/domain/models";
 import { MarketChart } from "@/features/charts/components/market-chart";
@@ -17,8 +17,8 @@ export function AssetDashboardPanel({
   const router = useRouter();
 
   return (
-    <main className="min-h-[650px] overflow-hidden rounded-[20px] border border-[#D7E4F4] bg-white shadow-[0_24px_70px_rgb(11_18_32_/_10%)]">
-      <div className="flex items-center justify-between border-b border-[#D7E4F4] p-3 xl:hidden">
+    <main className="min-h-[650px] overflow-hidden rounded-[18px] border border-[#D7E4F4] bg-white shadow-[0_24px_70px_rgb(11_18_32_/_10%)] md:rounded-[20px]">
+      <div className="flex items-center justify-between border-b border-[#D7E4F4] px-3 py-2 xl:hidden">
         <button
           type="button"
           onClick={() => {
@@ -29,27 +29,39 @@ export function AssetDashboardPanel({
             }
             router.push("/app");
           }}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white disabled:cursor-default disabled:opacity-40"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white disabled:cursor-default disabled:opacity-40"
           aria-label="Back to dashboard"
           disabled={!showMobileBack}
         >
           <ArrowLeft size={18} aria-hidden="true" />
         </button>
-        <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D7E4F4] bg-[#F6F9FF] text-[#0B1220]" aria-label="Add to watchlist">
-          <Star size={18} aria-hidden="true" />
+        <button type="button" className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D7E4F4] bg-[#F6F9FF] text-[#0B1220]" aria-label="Add to watchlist">
+          <Star size={16} aria-hidden="true" />
         </button>
       </div>
       <AssetDetail asset={asset} />
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#D7E4F4] px-4 py-3">
-        <div>
-          <h2 className="text-sm font-bold text-[#111827]">{asset.symbol} price history</h2>
-          <p className="text-xs text-[#6F7A8F]">Deterministic mock chart</p>
+      <div className="flex items-center justify-between gap-2 border-b border-[#D7E4F4] bg-[#F8FBFF] px-3 py-2">
+        <div className="flex min-w-0 items-center gap-2 text-sm font-black text-[#111827]">
+          <span>{range}</span>
+          <span className="h-5 w-px bg-[#D7E4F4]" aria-hidden="true" />
+          <ChartLine size={17} aria-hidden="true" />
+          <span className="hidden sm:inline">Indicators</span>
         </div>
-        <ChartRangeSelector range={range} onRangeChange={setRange} />
+        <div className="flex items-center gap-2 text-[#6F7A8F]">
+          <Flame size={17} aria-hidden="true" />
+          <Maximize size={17} aria-hidden="true" />
+        </div>
       </div>
-      <div className="p-4">
+      <div className="border-b border-[#D7E4F4] p-3 md:p-4">
         <MarketChart symbol={asset.symbol} range={range} positive={asset.changePercentage >= 0} />
       </div>
+      <div className="border-b border-[#D7E4F4] px-3 py-3 md:px-4">
+        <ChartRangeSelector range={range} onRangeChange={setRange} />
+      </div>
+      <section className="p-4">
+        <h2 className="text-base font-black text-[#111827]">About</h2>
+        <p className="mt-2 text-sm leading-6 text-[#334155]">{asset.description}</p>
+      </section>
     </main>
   );
 }

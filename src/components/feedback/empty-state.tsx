@@ -12,9 +12,9 @@ export function EmptyState({
   onAction?: () => void;
 }) {
   return (
-    <div className="rounded-[18px] border border-dashed border-white/[0.12] bg-white/[0.035] p-6 text-center text-white">
+    <div className="rounded-[18px] border border-dashed border-[#C9D8EE] bg-white p-6 text-center text-[#111827] shadow-[0_18px_50px_rgb(11_18_32_/_6%)]">
       <h3 className="text-lg font-semibold">{title}</h3>
-      <p className="mt-2 text-sm text-[#8E98AA]">{description}</p>
+      <p className="mt-2 text-sm text-[#6F7A8F]">{description}</p>
       {actionLabel && onAction ? (
         <Button className="mt-4 rounded-full" onClick={onAction}>
           {actionLabel}
