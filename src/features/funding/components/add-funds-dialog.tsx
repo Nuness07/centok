@@ -18,13 +18,15 @@ type Step = "entry" | "review" | "pix";
 export function AddFundsDialog({
   open,
   onOpenChange,
+  initialAmountBRL = demoConfig.defaultFundingAmountBRL,
   onComplete
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  initialAmountBRL?: string;
   onComplete?: () => void;
 }) {
-  const [amount, setAmount] = useState<string>(demoConfig.defaultFundingAmountBRL);
+  const [amount, setAmount] = useState<string>(initialAmountBRL);
   const [step, setStep] = useState<Step>("entry");
   const valid = decimal(amount || 0).greaterThanOrEqualTo(demoConfig.fundingMinimumBRL);
   const quote = useFundingQuote(amount, open && valid);
@@ -44,8 +46,11 @@ export function AddFundsDialog({
     if (!open) {
       setStep("entry");
       submit.reset();
+      return;
     }
-  }, [open]);
+
+    setAmount(initialAmountBRL);
+  }, [open, initialAmountBRL]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange} title="Add funds" variant="light">

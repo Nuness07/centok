@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Decimal from "decimal.js";
 import type { Asset } from "@/domain/models";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabButton } from "@/components/ui/tabs";
 import { decimal } from "@/lib/decimal";
 import { investmentPreviewRates } from "@/domain/calculations/investment-preview";
+import { demoConfig } from "@/config/demo";
 import { useAvailableBalance } from "@/features/portfolio/hooks/use-balance";
 import { PurchaseAmountForm } from "../forms/purchase-amount-form";
 
@@ -17,7 +19,7 @@ export function OrderTicket({
 }: {
   asset: Asset;
   onReview: (amount: string) => void;
-  onInsufficientFunds: (amount: string) => void;
+  onInsufficientFunds: (purchaseAmountUSDT: string, fundingAmountBRL: string) => void;
 }) {
   const [amount, setAmount] = useState(decimal("80.00").mul(investmentPreviewRates.BRL.exchangeRate).toFixed(2));
   const [error, setError] = useState<string | undefined>();
@@ -33,8 +35,17 @@ export function OrderTicket({
     const investmentUsdt = value.div(investmentPreviewRates.BRL.exchangeRate);
     const total = investmentUsdt.mul("1.005");
     if (total.greaterThan(availableBalance.amount)) {
+      const shortfallUsdt = total.minus(availableBalance.amount);
+      const fundingAmountBRL = shortfallUsdt
+        .mul(investmentPreviewRates.BRL.exchangeRate)
+        .plus(investmentPreviewRates.BRL.localFundingFee)
+        .toDecimalPlaces(2, Decimal.ROUND_CEIL)
+        .toFixed(2);
+      const requiredFundingAmountBRL = decimal(fundingAmountBRL).lessThan(demoConfig.fundingMinimumBRL)
+        ? demoConfig.fundingMinimumBRL
+        : fundingAmountBRL;
       setError("Add funds to continue with this purchase.");
-      onInsufficientFunds(investmentUsdt.toFixed(2));
+      onInsufficientFunds(investmentUsdt.toFixed(2), requiredFundingAmountBRL);
       return;
     }
     setError(undefined);
@@ -42,7 +53,7 @@ export function OrderTicket({
   };
 
   return (
-    <aside className="min-h-[650px] rounded-[20px] border border-[#D7E4F4] bg-white p-4 shadow-[0_24px_70px_rgb(11_18_32_/_10%)]">
+    <aside className="min-h-0 rounded-[20px] border border-[#D7E4F4] bg-white p-4 shadow-[0_24px_70px_rgb(11_18_32_/_10%)] xl:min-h-[650px]">
       <div className="mb-4 flex items-center justify-between">
         <div>
           <h2 className="text-lg font-bold text-[#111827]">Buy</h2>

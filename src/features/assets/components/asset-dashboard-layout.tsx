@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import { ErrorState } from "@/components/feedback/error-state";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { demoConfig } from "@/config/demo";
-import { decimal } from "@/lib/decimal";
 import { AddFundsDialog } from "@/features/funding/components/add-funds-dialog";
 import { saveFundingReturnContext, clearFundingReturnContext } from "@/features/funding/services/funding-return-context";
-import { useAvailableBalance } from "@/features/portfolio/hooks/use-balance";
 import { OrderTicket } from "@/features/trading/components/order-ticket";
 import { PurchaseDialog } from "@/features/trading/components/purchase-dialog";
 import { useSelectedAsset } from "../hooks/use-selected-asset";
@@ -19,10 +17,10 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
   const [activeSymbol, setActiveSymbol] = useState(normalizedSymbol);
   const [mobileView, setMobileView] = useState<"list" | "detail">(startInDetail ? "detail" : "list");
   const asset = useSelectedAsset(activeSymbol);
-  const balance = useAvailableBalance();
   const [purchaseOpen, setPurchaseOpen] = useState(false);
   const [fundingOpen, setFundingOpen] = useState(false);
   const [purchaseAmount, setPurchaseAmount] = useState<string>(demoConfig.defaultPurchaseAmountUSDT);
+  const [fundingAmountBRL, setFundingAmountBRL] = useState<string>(demoConfig.defaultFundingAmountBRL);
   const [returnToPurchase, setReturnToPurchase] = useState(false);
 
   useEffect(() => {
@@ -58,21 +56,6 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
     );
   }
 
-  const startMobilePurchase = () => {
-    const amount = demoConfig.defaultPurchaseAmountUSDT;
-    const available = balance.data ?? { amount: "0.00", currency: "USDT" as const };
-    setPurchaseAmount(amount);
-
-    if (decimal(amount).mul("1.005").greaterThan(available.amount)) {
-      setReturnToPurchase(true);
-      saveFundingReturnContext(asset.data.symbol, amount);
-      setFundingOpen(true);
-      return;
-    }
-
-    setPurchaseOpen(true);
-  };
-
   return (
     <div className="mx-auto grid max-w-[1480px] gap-4 p-4 md:p-6 xl:grid-cols-[270px_minmax(0,1fr)_360px]">
       <div className={mobileView === "list" ? "xl:hidden" : "hidden"}>
@@ -104,8 +87,9 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
             setPurchaseAmount(amount);
             setPurchaseOpen(true);
           }}
-          onInsufficientFunds={(amount) => {
+          onInsufficientFunds={(amount, fundingAmount) => {
             setPurchaseAmount(amount);
+            setFundingAmountBRL(fundingAmount);
             setReturnToPurchase(true);
             saveFundingReturnContext(asset.data.symbol, amount);
             setFundingOpen(true);
@@ -113,13 +97,22 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
         />
       </div>
       {mobileView === "detail" ? (
-        <button
-          type="button"
-          onClick={startMobilePurchase}
-          className="fixed inset-x-4 bottom-20 z-30 min-h-12 rounded-full bg-primary px-5 text-sm font-black text-white shadow-[0_18px_50px_rgb(0_0_0_/_35%)] xl:hidden"
-        >
-          + Buy
-        </button>
+        <div className="xl:hidden">
+          <OrderTicket
+            asset={asset.data}
+            onReview={(amount) => {
+              setPurchaseAmount(amount);
+              setPurchaseOpen(true);
+            }}
+            onInsufficientFunds={(amount, fundingAmount) => {
+              setPurchaseAmount(amount);
+              setFundingAmountBRL(fundingAmount);
+              setReturnToPurchase(true);
+              saveFundingReturnContext(asset.data.symbol, amount);
+              setFundingOpen(true);
+            }}
+          />
+        </div>
       ) : null}
       <PurchaseDialog
         open={purchaseOpen}
@@ -130,6 +123,7 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
       <AddFundsDialog
         open={fundingOpen}
         onOpenChange={setFundingOpen}
+        initialAmountBRL={fundingAmountBRL}
         onComplete={() => {
           if (returnToPurchase) {
             clearFundingReturnContext();
@@ -140,4 +134,3 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
     </div>
   );
 }
-
