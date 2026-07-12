@@ -20,8 +20,8 @@ export function LightweightChartAdapter({ points, positive }: ChartAdapterProps)
   const latest = points.at(-1)?.value ?? "0";
 
   return (
-    <div className="relative h-[260px] w-full overflow-hidden rounded-[14px] border border-[#D7E4F4] bg-[#F8FBFF] p-2 [background-image:linear-gradient(rgb(184_200_224_/_24%)_1px,transparent_1px),linear-gradient(90deg,rgb(184_200_224_/_24%)_1px,transparent_1px)] [background-size:76px_58px] md:h-[380px] md:rounded-[16px] md:p-3 md:[background-size:90px_72px]">
-      <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full" role="img" aria-label="Price history chart">
+    <div className="relative h-[240px] w-full min-w-0 max-w-full overflow-hidden rounded-[14px] border border-[#D7E4F4] bg-[#F8FBFF] p-1 [background-image:linear-gradient(rgb(184_200_224_/_24%)_1px,transparent_1px),linear-gradient(90deg,rgb(184_200_224_/_24%)_1px,transparent_1px)] [background-size:64px_52px] sm:h-[260px] md:h-[380px] md:rounded-[16px] md:p-3 md:[background-size:90px_72px]">
+      <svg viewBox={`0 0 ${width} ${height}`} className="block h-full w-full max-w-full" preserveAspectRatio="none" role="img" aria-label="Price history chart">
         <defs>
           <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor={positive ? "#16A36A" : "#DC3545"} stopOpacity="0.16" />

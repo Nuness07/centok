@@ -17,7 +17,7 @@ export function AssetDashboardPanel({
   const router = useRouter();
 
   return (
-    <main className="min-h-[650px] overflow-hidden rounded-[18px] border border-[#D7E4F4] bg-white shadow-[0_24px_70px_rgb(11_18_32_/_10%)] md:rounded-[20px]">
+    <main className="min-h-[650px] w-full min-w-0 max-w-full overflow-hidden rounded-[18px] border border-[#D7E4F4] bg-white shadow-[0_24px_70px_rgb(11_18_32_/_10%)] md:rounded-[20px]">
       <div className="flex items-center justify-between border-b border-[#D7E4F4] px-3 py-2 xl:hidden">
         <button
           type="button"
@@ -52,10 +52,10 @@ export function AssetDashboardPanel({
           <Maximize size={17} aria-hidden="true" />
         </div>
       </div>
-      <div className="border-b border-[#D7E4F4] p-3 md:p-4">
+      <div className="min-w-0 overflow-hidden border-b border-[#D7E4F4] p-2 md:p-4">
         <MarketChart symbol={asset.symbol} range={range} positive={asset.changePercentage >= 0} />
       </div>
-      <div className="border-b border-[#D7E4F4] px-3 py-3 md:px-4">
+      <div className="min-w-0 overflow-hidden border-b border-[#D7E4F4] px-2 py-3 md:px-4">
         <ChartRangeSelector range={range} onRangeChange={setRange} />
       </div>
       <section className="p-4">

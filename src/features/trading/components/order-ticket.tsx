@@ -53,7 +53,7 @@ export function OrderTicket({
   };
 
   return (
-    <aside className="min-h-0 rounded-[20px] border border-[#D7E4F4] bg-white p-4 shadow-[0_24px_70px_rgb(11_18_32_/_10%)] xl:min-h-[650px]">
+    <aside className="min-h-0 w-full min-w-0 max-w-full overflow-hidden rounded-[20px] border border-[#D7E4F4] bg-white p-3 shadow-[0_24px_70px_rgb(11_18_32_/_10%)] sm:p-4 xl:min-h-[650px]">
       <div className="mb-4 flex items-center justify-between">
         <div>
           <h2 className="text-lg font-bold text-[#111827]">Buy</h2>

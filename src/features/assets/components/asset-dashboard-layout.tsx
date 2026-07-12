@@ -59,7 +59,7 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
   }
 
   return (
-    <div className="mx-auto grid max-w-[1480px] gap-4 p-4 md:p-6 xl:grid-cols-[270px_minmax(0,1fr)_360px]">
+    <div className="mx-auto grid w-full max-w-[1480px] min-w-0 gap-3 p-3 md:gap-4 md:p-6 xl:grid-cols-[270px_minmax(0,1fr)_360px]">
       <div className={mobileView === "list" ? "xl:hidden" : "hidden"}>
         <AssetList
           selectedSymbol={asset.data.symbol}
@@ -100,7 +100,7 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
         />
       </div>
       {mobileView === "detail" ? (
-        <div className="xl:hidden">
+        <div className="min-w-0 xl:hidden">
           <OrderTicket
             asset={asset.data}
             onReview={(amount) => {

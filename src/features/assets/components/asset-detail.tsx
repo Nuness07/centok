@@ -9,10 +9,10 @@ export function AssetDetail({ asset }: { asset: Asset }) {
   const metrics = getAssetMetrics(asset.symbol);
 
   return (
-    <section className="border-b border-[#D7E4F4]">
-      <div className="p-4 md:p-5">
-        <div className="flex items-center gap-3">
-          <AssetLogo symbol={asset.symbol} src={asset.logoUrl} className="h-11 w-11 bg-[#E8EEF8] md:h-12 md:w-12" />
+    <section className="min-w-0 border-b border-[#D7E4F4]">
+      <div className="min-w-0 p-3 md:p-5">
+        <div className="flex min-w-0 items-center gap-3">
+          <AssetLogo symbol={asset.symbol} src={asset.logoUrl} className="h-10 w-10 shrink-0 bg-[#E8EEF8] md:h-12 md:w-12" />
           <div className="min-w-0">
             <h1 className="truncate text-lg font-black leading-tight text-[#111827] md:text-2xl">
               {asset.symbol} / {asset.name.split(",")[0]}
@@ -21,13 +21,13 @@ export function AssetDetail({ asset }: { asset: Asset }) {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-4 md:grid-cols-4">
+        <div className="mt-4 grid min-w-0 grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-4 md:gap-x-5">
           <Metric
             label="Price"
             value={
               <LocalizedMoneyDisplay
                 money={asset.price}
-                localClassName="text-2xl font-black leading-none text-[#111827] md:text-3xl"
+                localClassName="truncate text-xl font-black leading-none text-[#111827] sm:text-2xl md:text-3xl"
                 referenceClassName="mt-1 text-[11px] text-[#6F7A8F]"
               />
             }
@@ -43,9 +43,9 @@ export function AssetDetail({ asset }: { asset: Asset }) {
 
 function Metric({ label, value }: { label: string; value: ReactNode }) {
   return (
-    <div>
+    <div className="min-w-0 overflow-hidden">
       <p className="text-xs font-bold text-[#6F7A8F]">{label}</p>
-      <div className="mt-1 text-lg font-black leading-tight text-[#111827]">{value}</div>
+      <div className="mt-1 min-w-0 truncate text-base font-black leading-tight text-[#111827] sm:text-lg">{value}</div>
     </div>
   );
 }
