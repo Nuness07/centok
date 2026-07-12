@@ -1,5 +1,5 @@
 export const landingCopy = {
-  heroTitle: "U.S. stocks. Funded by PIX.",
+  heroTitle: "Buy U.S. Stocks without bureaucracy",
   heroBody: "Sign up with your email. Deposit in local currency. Invest in NVDA, TSLA, AAPL and more — in minutes.",
   steps: ["Fund with PIX", "Pick a stock", "Confirm your order"],
   comparison: {
