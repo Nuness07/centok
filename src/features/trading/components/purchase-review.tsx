@@ -3,6 +3,7 @@
 import type { Asset, OrderQuote } from "@/domain/models";
 import { QuoteSummary } from "@/components/financial/quote-summary";
 import { QuantityDisplay } from "@/components/financial/quantity-display";
+import { formatQuantity } from "@/lib/currency";
 
 export function PurchaseReview({ asset, quote }: { asset: Asset; quote: OrderQuote }) {
   return (
@@ -17,7 +18,7 @@ export function PurchaseReview({ asset, quote }: { asset: Asset; quote: OrderQuo
           { label: "Company", value: `${asset.name} (${asset.symbol})` },
           { label: "Amount invested", value: quote.investmentAmount },
           { label: "Price", value: quote.assetPrice },
-          { label: "Estimated quantity", value: `${quote.estimatedQuantity} ${asset.symbol} Token` },
+          { label: "Estimated quantity", value: `${formatQuantity(quote.estimatedQuantity)} ${asset.symbol} Token` },
           { label: "Execution fee", value: quote.executionFee },
           { label: "Total", value: quote.total, emphasis: true },
           { label: "Remaining balance", value: quote.remainingBalance },

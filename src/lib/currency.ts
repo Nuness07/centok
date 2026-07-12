@@ -36,8 +36,7 @@ export function formatMoney(money: Money, options: { compact?: boolean } = {}): 
 export function formatQuantity(value: string): string {
   const qty = decimal(value);
   if (qty.isZero()) return "0";
-  if (qty.lessThan("0.0001")) return qty.toSignificantDigits(4).toString();
-  return qty.toDecimalPlaces(6).toString();
+  return qty.toDecimalPlaces(2).toFixed(2);
 }
 
 export function formatPercentage(value: number): string {
