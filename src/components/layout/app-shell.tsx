@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { BarChart3, Home, List, Wallet } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import { LoadingState } from "@/components/feedback/loading-state";
 import { routes } from "@/config/routes";
 import { useCurrentUser } from "@/features/auth/hooks/use-auth";
 import { AddFundsDialog } from "@/features/funding/components/add-funds-dialog";
@@ -30,10 +29,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   if (user.isLoading || !user.data) {
     return (
-      <main className="centok-shell flex min-h-screen items-center justify-center p-6">
-        <div className="w-full max-w-md rounded-lg border border-border-dark bg-elevated p-6">
-          <LoadingState label="Checking demo session" />
-        </div>
+      <main className="flex min-h-screen items-center justify-center bg-[#F7FAFF] p-6">
+        <div className="h-9 w-9 animate-spin rounded-full border-2 border-[#D7E4F4] border-t-primary" aria-label="Loading" />
       </main>
     );
   }
@@ -85,4 +82,3 @@ function MobileAppNav() {
     </nav>
   );
 }
-

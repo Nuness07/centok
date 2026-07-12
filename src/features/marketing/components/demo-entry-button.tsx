@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 
 import { cn } from "@/lib/cn";
 import { useStartDefaultDemo } from "@/features/auth/hooks/use-auth";
@@ -26,8 +26,17 @@ export function DemoEntryButton({
       }}
       disabled={startDemo.isPending}
     >
-      {startDemo.isPending ? "Entering demo" : children}
-      <ArrowRight size={18} aria-hidden="true" />
+      {startDemo.isPending ? (
+        <>
+          <Loader2 size={18} className="animate-spin" aria-hidden="true" />
+          Loading
+        </>
+      ) : (
+        <>
+          {children}
+          <ArrowRight size={18} aria-hidden="true" />
+        </>
+      )}
     </button>
   );
 }
