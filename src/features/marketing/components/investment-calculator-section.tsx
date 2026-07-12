@@ -81,15 +81,15 @@ export function InvestmentCalculatorSection() {
         <div className="max-w-2xl">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">Estimate your first purchase</p>
           <h2 className="mt-4 text-4xl font-semibold leading-tight text-[#F5F7FB] md:text-6xl">
-            See the local cost before opening the app.
+            See exactly what you would pay.
           </h2>
           <p className="mt-6 text-base leading-8 text-[#9AA4B5] md:text-lg">
-            Pick a local currency and a supported U.S. company. Centok shows conversion, fees, and the estimated Stock Token amount.
+            Enter an amount in your local currency and pick a stock. Centok shows the estimated exchange rate, fees, and how many shares you would receive.
           </p>
           <AppEntryButton
             className="mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-4 text-sm font-bold text-white transition hover:bg-primary-hover"
           >
-            Start with this estimate
+            Try it in the demo
           </AppEntryButton>
         </div>
 
@@ -150,7 +150,7 @@ export function InvestmentCalculatorSection() {
                     <p className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-[2rem] font-black leading-none text-white sm:text-3xl md:text-4xl lg:text-[2.75rem]">
                       {preview ? formatQuantity(preview.estimatedQuantity) : "---"}
                     </p>
-                    <p className="mt-2 truncate text-sm font-semibold text-[#8E98AA]">{selectedAsset ? `${selectedAsset.symbol} Stock Token` : "Stock Token"}</p>
+                    <p className="mt-2 truncate text-sm font-semibold text-[#8E98AA]">{selectedAsset ? `${selectedAsset.symbol} shares` : "Shares"}</p>
                   </div>
                 </div>
               ) : (
@@ -336,10 +336,10 @@ function QuoteBreakdown({
 }) {
   const rows = [
     { label: "Payment method", value: paymentMethod },
-    { label: "Exchange rate", value: `1 USDT = ${formatMoney({ amount: investmentPreviewRates[currency].exchangeRate, currency })}` },
+    { label: "Exchange rate", value: `1 USD = ${formatMoney({ amount: investmentPreviewRates[currency].exchangeRate, currency })}` },
     { label: "Local fee", value: preview ? formatMoney(preview.localFundingFee) : "---" },
-    { label: mode === "stock-to-local" ? "USDT required" : "USDT after conversion", value: preview ? formatMoney(preview.convertedUsdt) : "---" },
-    { label: "Stock Token price", value: asset ? formatMoney(asset.price) : "---" },
+    { label: mode === "stock-to-local" ? "Amount required" : "Amount after conversion", value: preview ? formatMoney(preview.convertedUsdt) : "---" },
+    { label: "Share price", value: asset ? formatMoney(asset.price) : "---" },
     { label: "Execution fee", value: preview ? formatMoney(preview.executionFee) : "---" }
   ];
 
@@ -349,7 +349,7 @@ function QuoteBreakdown({
         {rows.map((row) => (
           <div key={row.label} className="flex min-w-0 items-center justify-between gap-3 border-b border-white/[0.06] py-2 last:border-0 md:last:border-b">
             <span className="shrink-0 text-sm text-[#8E98AA]">{row.label}</span>
-            <span className={cn("min-w-0 truncate text-right text-sm font-bold text-white", row.label === "USDT after conversion" && "text-primary")}>{row.value}</span>
+            <span className={cn("min-w-0 truncate text-right text-sm font-bold text-white", row.label === "Amount after conversion" && "text-primary")}>{row.value}</span>
           </div>
         ))}
       </div>

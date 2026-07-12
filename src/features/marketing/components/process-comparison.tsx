@@ -12,14 +12,14 @@ export function ProcessComparison() {
 
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <PathLane
-            label="Traditional path"
-            description="More accounts, more handoffs, more room for confusion."
+            label="The old way"
+            description="An overseas account, currency fees, wire transfers, and days of waiting — before you can even think about buying."
             items={landingCopy.comparison.traditional}
             tone="old"
           />
           <PathLane
-            label="Centok path"
-            description="One product flow with familiar actions and a clear review step."
+            label="The Centok way"
+            description="Fund with a local payment, pick a stock, confirm. That is it."
             items={landingCopy.comparison.centok}
             tone="centok"
           />

@@ -1,9 +1,9 @@
 export const landingCopy = {
-  heroTitle: "Buy U.S. Stocks without bureaucracy",
-  heroBody: "A new way to use Stocks",
-  steps: ["Add funds", "Choose a company", "Confirm your investment"],
+  heroTitle: "U.S. stocks. Funded by PIX.",
+  heroBody: "Sign up with your email. Deposit in local currency. Invest in NVDA, TSLA, AAPL and more — in minutes.",
+  steps: ["Fund with PIX", "Pick a stock", "Confirm your order"],
   comparison: {
-    traditional: ["International account", "Documentation", "Currency exchange", "International transfer", "Brokerage", "Purchase"],
-    centok: ["Add funds", "Choose company", "Confirm"]
+    traditional: ["Open an overseas account", "Submit documentation", "Exchange currency", "Pay fees on the transfer", "Wait days for funds to clear", "Buy the stock"],
+    centok: ["Fund with PIX", "Pick a stock", "Confirm"]
   }
 } as const;
