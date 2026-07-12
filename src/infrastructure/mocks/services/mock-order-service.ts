@@ -16,7 +16,7 @@ export class MockOrderService implements OrderService {
     return withLatency(() => {
       const state = getDemoState();
       if (state.scenario === "purchase-error") {
-        throw new PurchaseFailedError("The simulated order quote failed.");
+        throw new PurchaseFailedError("The order quote failed.");
       }
       const asset = supportedAssets.find((item) => item.id === input.assetId || item.symbol === input.assetId);
       if (!asset) throw new Error("Unsupported asset.");

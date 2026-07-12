@@ -9,7 +9,7 @@ export function AssetListEmpty() {
   return (
     <EmptyState
       title="No matching Stock Tokens"
-      description="Try another ticker or company name from the supported demo list."
+      description="Try another ticker or company name from the supported list."
     />
   );
 }

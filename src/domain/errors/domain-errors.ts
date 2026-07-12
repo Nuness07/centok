@@ -20,21 +20,21 @@ export class AssetUnavailableError extends Error {
 }
 
 export class FundingFailedError extends Error {
-  constructor(message = "The simulated funding transaction failed.") {
+  constructor(message = "The funding transaction failed.") {
     super(message);
     this.name = "FundingFailedError";
   }
 }
 
 export class PurchaseFailedError extends Error {
-  constructor(message = "The simulated purchase failed.") {
+  constructor(message = "The purchase failed.") {
     super(message);
     this.name = "PurchaseFailedError";
   }
 }
 
 export class StorageUnavailableError extends Error {
-  constructor(message = "Browser storage is unavailable for the demo state.") {
+  constructor(message = "Browser storage is unavailable for this workspace.") {
     super(message);
     this.name = "StorageUnavailableError";
   }

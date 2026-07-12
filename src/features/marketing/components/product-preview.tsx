@@ -5,7 +5,7 @@ export function ProductPreview() {
     <div className="rounded-lg border border-border-light bg-white p-4 shadow-panel" aria-label="Centok product preview">
       <div className="rounded-md bg-background p-4 text-white">
         <div className="mb-4 flex items-center justify-between border-b border-border-dark pb-3">
-          <span className="font-semibold">Centok demo</span>
+          <span className="font-semibold">Centok</span>
           <span className="rounded bg-primary px-2 py-1 text-xs font-semibold">Available 24/7</span>
         </div>
         <div className="grid gap-3 md:grid-cols-3">

@@ -2,7 +2,7 @@ export function SecuritySection() {
   const points = [
     "Every funding and purchase action includes a review step.",
     "Fees, estimates, quote expiration, and transaction status are visible before confirmation.",
-    "The demo never asks for wallet credentials, seed phrases, or real PIX payments.",
+    "Centok never asks for wallet credentials, seed phrases, or manual blockchain actions.",
     "Stock Token disclosures avoid claiming direct ownership of underlying shares."
   ];
 

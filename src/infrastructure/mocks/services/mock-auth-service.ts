@@ -15,7 +15,7 @@ export class MockAuthService implements AuthService {
     return withLatency(() => {
       const state = getDemoState();
       if (state.scenario === "failed-login") {
-        throw new Error("The demo login is intentionally failing in this scenario.");
+        throw new Error("Login is unavailable in the selected workspace mode.");
       }
       updateDemoState((current) => ({ ...current, authenticatedUserId: current.user.id }));
       return state.user;

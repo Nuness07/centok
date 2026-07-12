@@ -23,7 +23,7 @@ export function useLoginAsDemoUser() {
     mutationFn: () => authService.loginAsDemoUser(),
     onSuccess: async () => {
       await queryClient.invalidateQueries();
-      router.push(routes.app);
+      router.replace(routes.app);
     }
   });
 }
@@ -40,7 +40,7 @@ export function useStartDefaultDemo() {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries();
-      router.push(routes.app);
+      router.replace(routes.app);
     }
   });
 }

@@ -4,7 +4,7 @@ import { AppProviders } from "./providers";
 
 export const metadata: Metadata = {
   title: "Centok | Tokenized U.S. stock access",
-  description: "A deterministic frontend demo for simplified tokenized U.S. equity exposure."
+  description: "Simplified tokenized U.S. equity exposure."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

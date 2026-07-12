@@ -9,7 +9,7 @@ export function ChartErrorState({ onRetry }: { onRetry: () => void }) {
   return (
     <ErrorState
       title="Chart temporarily unavailable"
-      description="This mock scenario is showing the recoverable chart error state."
+      description="Chart data is temporarily unavailable. Try another range or reload the page."
       onRetry={onRetry}
     />
   );

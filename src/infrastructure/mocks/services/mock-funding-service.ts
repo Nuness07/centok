@@ -14,7 +14,7 @@ export class MockFundingService implements FundingService {
     return withLatency(() => {
       const state = getDemoState();
       if (state.scenario === "funding-error") {
-        throw new FundingFailedError("The simulated funding quote failed.");
+        throw new FundingFailedError("The funding quote failed.");
       }
       const quote = calculateFundingQuote(input, state.transactions.length + quoteStore.size + 1);
       const finalQuote = state.scenario === "expired-quote" ? { ...quote, expiresAt: "2026-01-01T00:00:00.000Z" } : quote;

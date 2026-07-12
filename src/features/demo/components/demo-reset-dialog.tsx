@@ -9,12 +9,12 @@ export function DemoResetDialog({ open, onOpenChange }: { open: boolean; onOpenC
   const reset = useResetDemoState();
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange} title="Reset demo state" variant="light">
+    <Dialog open={open} onOpenChange={onOpenChange} title="Reset workspace" variant="light">
       <div className="space-y-4">
         <p className="text-sm text-[#6F7A8F]">
-          This restores the original demo user, low balance, empty portfolio, transaction fixtures, and default scenario.
+          This restores the original account, low balance, empty portfolio, transaction history, and default workspace mode.
         </p>
-        {reset.isSuccess ? <Toast tone="success">Demo state restored.</Toast> : null}
+        {reset.isSuccess ? <Toast tone="success">Workspace restored.</Toast> : null}
         {reset.isError ? <Toast tone="error">Reset failed. Try again.</Toast> : null}
         <div className="flex justify-end gap-3">
           <Button variant="ghost" className="rounded-full text-[#6F7A8F]" onClick={() => onOpenChange(false)}>
@@ -33,7 +33,7 @@ export function DemoResetDialog({ open, onOpenChange }: { open: boolean; onOpenC
               })
             }
           >
-            {reset.isPending ? "Resetting" : "Reset demo"}
+            {reset.isPending ? "Resetting" : "Reset workspace"}
           </Button>
         </div>
       </div>

@@ -9,7 +9,7 @@ export function PortfolioEmptyState() {
   return (
     <EmptyState
       title="No Stock Token positions yet"
-      description="Browse supported U.S. companies and complete a simulated purchase to create a position."
+      description="Browse supported U.S. companies and complete a purchase to create a position."
       actionLabel="Browse markets"
       onAction={() => router.push(routes.app)}
     />

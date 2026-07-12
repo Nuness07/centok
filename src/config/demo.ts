@@ -1,5 +1,5 @@
 export const demoConfig = {
-  storageKey: "centok.demo.state.v1",
+  storageKey: "centok.app.state.v1",
   storageVersion: 1,
   defaultSymbol: "AAPL",
   defaultFundingAmountBRL: "500.00",

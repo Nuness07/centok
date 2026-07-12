@@ -10,7 +10,7 @@ import { AssetLogo } from "@/components/financial/asset-logo";
 import { useAssets } from "@/features/assets/hooks/use-assets";
 import { cn } from "@/lib/cn";
 import { formatMoney, formatQuantity } from "@/lib/currency";
-import { DemoEntryButton } from "./demo-entry-button";
+import { AppEntryButton } from "./app-entry-button";
 
 type CalculatorMode = "local-to-stock" | "stock-to-local";
 
@@ -84,23 +84,23 @@ export function InvestmentCalculatorSection() {
             See the local cost before opening the app.
           </h2>
           <p className="mt-6 text-base leading-8 text-[#9AA4B5] md:text-lg">
-            Pick a local currency and a supported U.S. company. Centok shows a simulated conversion, fees, and the estimated Stock Token amount.
+            Pick a local currency and a supported U.S. company. Centok shows conversion, fees, and the estimated Stock Token amount.
           </p>
-          <DemoEntryButton
+          <AppEntryButton
             className="mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-6 py-4 text-sm font-bold text-white transition hover:bg-primary-hover"
           >
             Start with this estimate
-          </DemoEntryButton>
+          </AppEntryButton>
         </div>
 
         <div className="w-full min-w-0 overflow-hidden rounded-[28px] border border-white/[0.08] bg-[#11141A] p-3 shadow-[0_28px_90px_rgb(0_0_0_/_34%)] sm:p-4 md:rounded-[32px] md:p-6 lg:max-w-[620px] lg:justify-self-end">
           <div className="mb-5 flex items-center justify-between gap-4 px-1">
             <div>
               <p className="text-base font-bold text-white">Calculator</p>
-              <p className="mt-1 text-sm text-[#8E98AA]">Simulated quote</p>
+              <p className="mt-1 text-sm text-[#8E98AA]">Estimate</p>
             </div>
             <span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-primary">
-              Offline mock
+              Offline
             </span>
           </div>
 
@@ -354,7 +354,7 @@ function QuoteBreakdown({
         ))}
       </div>
       <p className="mt-4 text-xs leading-5 text-[#8E98AA]">
-        Simulated estimate. Final values appear before confirmation in the app.
+        Estimate only. Final values appear before confirmation in the app.
       </p>
     </div>
   );

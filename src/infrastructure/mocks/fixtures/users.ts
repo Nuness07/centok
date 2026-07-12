@@ -1,8 +1,8 @@
 import type { User } from "@/domain/models";
 
 export const demoUser: User = {
-  id: "user-gabriel-demo",
+  id: "user-gabriel",
   name: "Gabriel",
-  email: "gabriel.demo@centok.local",
+  email: "gabriel@centok.local",
   countryCode: "BR"
 };

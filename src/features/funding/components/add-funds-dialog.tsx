@@ -76,7 +76,7 @@ export function AddFundsDialog({
       {submit.isPending ? <FundingPending /> : null}
       {submit.isError ? (
         <FundingError
-          message={submit.error instanceof Error ? submit.error.message : "The simulated funding failed."}
+          message={submit.error instanceof Error ? submit.error.message : "The funding failed."}
           onRetry={() => quote.data && submit.mutate(quote.data.id)}
         />
       ) : null}
@@ -93,4 +93,3 @@ export function AddFundsDialog({
     </Dialog>
   );
 }
-

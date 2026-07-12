@@ -31,7 +31,7 @@ export function PurchaseDialog({
     if (!open) submit.reset();
   }, [open]);
 
-  const message = submit.error instanceof Error ? submit.error.message : "The simulated order could not be completed.";
+  const message = submit.error instanceof Error ? submit.error.message : "The order could not be completed.";
   const expired = quote.error instanceof Error && quote.error.name === "QuoteExpiredError";
   const readyForReview = quote.data && !submit.isPending && !submit.isSuccess && !submit.isError;
 

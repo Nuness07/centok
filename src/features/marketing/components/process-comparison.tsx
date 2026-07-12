@@ -26,7 +26,7 @@ export function ProcessComparison() {
         </div>
 
         <p className="mx-auto mt-16 max-w-3xl text-center text-sm leading-6 text-text-muted">
-          Legal, tax, and eligibility obligations may still apply. The demo only shows a simpler product flow.
+          Legal, tax, and eligibility obligations may still apply.
         </p>
       </div>
     </section>

@@ -23,7 +23,7 @@ export function UserMenu() {
         variant="ghost"
         className="hidden h-10 w-10 rounded-full border border-[#D7E4F4] bg-[#F7FAFF] p-0 text-[#6F7A8F] hover:bg-[#EEF4FE] hover:text-[#0B1220] md:inline-flex"
         onClick={() => setScenarioOpen((open) => !open)}
-        aria-label="Open scenario selector"
+        aria-label="Open workspace settings"
         aria-expanded={scenarioOpen}
       >
         <SlidersHorizontal size={16} aria-hidden="true" />
@@ -31,7 +31,7 @@ export function UserMenu() {
       {scenarioOpen ? (
         <div className="absolute right-0 top-[calc(100%+12px)] z-50 w-64 rounded-[18px] border border-[#D7E4F4] bg-white p-2 shadow-[0_24px_70px_rgb(11_18_32_/_14%)]">
           <div className="px-3 py-2">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6F7A8F]">Demo scenario</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6F7A8F]">Workspace mode</p>
           </div>
           <div className="grid gap-1">
             {demoScenarioOptions.map((option) => (
@@ -55,7 +55,7 @@ export function UserMenu() {
           </div>
         </div>
       ) : null}
-      <Button variant="ghost" className="h-10 w-10 rounded-full border border-[#D7E4F4] bg-[#F7FAFF] p-0 text-[#6F7A8F] hover:bg-[#EEF4FE] hover:text-[#0B1220]" onClick={() => setResetOpen(true)} aria-label="Reset demo">
+      <Button variant="ghost" className="h-10 w-10 rounded-full border border-[#D7E4F4] bg-[#F7FAFF] p-0 text-[#6F7A8F] hover:bg-[#EEF4FE] hover:text-[#0B1220]" onClick={() => setResetOpen(true)} aria-label="Reset workspace">
         <RotateCcw size={16} aria-hidden="true" />
       </Button>
       <Button variant="ghost" className="min-h-10 rounded-full border border-[#D7E4F4] bg-[#F7FAFF] px-3 text-[#0B1220] hover:bg-[#EEF4FE]" onClick={() => logout.mutate()} disabled={logout.isPending}>

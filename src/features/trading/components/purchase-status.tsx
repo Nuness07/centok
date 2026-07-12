@@ -10,7 +10,7 @@ export function PurchasePending() {
       <StatusIndicator status="pending" label="Purchase pending" />
       <ol className="space-y-2 text-sm text-[#6F7A8F]">
         <li>Preparing order</li>
-        <li>Executing simulated purchase</li>
+        <li>Executing purchase</li>
         <li>Updating portfolio</li>
       </ol>
     </output>

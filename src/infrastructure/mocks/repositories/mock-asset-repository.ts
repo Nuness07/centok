@@ -14,7 +14,7 @@ export class MockAssetRepository implements AssetRepository {
   getAsset(symbol: string): Promise<Asset> {
     return withLatency(() => {
       const asset = supportedAssets.find((item) => item.symbol.toLowerCase() === symbol.toLowerCase());
-      if (!asset) throw new AssetUnavailableError("This Stock Token is not supported in the demo.");
+      if (!asset) throw new AssetUnavailableError("This Stock Token is not supported.");
       return asset;
     }, 260);
   }

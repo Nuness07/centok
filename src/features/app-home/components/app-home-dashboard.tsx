@@ -89,7 +89,7 @@ export function AppHomeDashboard() {
           ) : null}
           {!portfolio.isLoading && positions.length === 0 ? (
             <p className="rounded-[20px] border border-[#D7E4F4] bg-[#F8FBFF] p-4 text-sm text-[#6F7A8F]">
-              Your Stocks positions will appear here after the first simulated purchase.
+              Your Stocks positions will appear here after the first purchase.
             </p>
           ) : null}
         </div>

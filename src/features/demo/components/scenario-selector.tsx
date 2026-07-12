@@ -17,7 +17,7 @@ export function ScenarioSelector({ open, onOpenChange }: { open: boolean; onOpen
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange} title="Demo scenario" variant="dark">
+    <Dialog open={open} onOpenChange={onOpenChange} title="Workspace mode" variant="dark">
       <div className="grid gap-2">
         {demoScenarioOptions.map((option) => (
           <Button

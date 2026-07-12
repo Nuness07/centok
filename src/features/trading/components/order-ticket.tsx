@@ -46,7 +46,7 @@ export function OrderTicket({
       <div className="mb-4 flex items-center justify-between">
         <div>
           <h2 className="text-lg font-bold text-[#111827]">Buy</h2>
-          <p className="text-xs text-[#6F7A8F]">Simulated Stock Token order</p>
+          <p className="text-xs text-[#6F7A8F]">Stock Token order</p>
         </div>
         <button type="button" className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D7E4F4] bg-[#F6F9FF] text-[#6F7A8F]" aria-label="Order settings">
           <SlidersHorizontal size={16} aria-hidden="true" />
@@ -70,7 +70,7 @@ export function OrderTicket({
         Review order <ArrowRight size={16} aria-hidden="true" />
       </Button>
       <p className="mt-4 text-xs leading-5 text-[#6F7A8F]">
-        Review always appears before a simulated purchase. No wallet, gas, or token approval is required in the demo experience.
+        Review always appears before purchase. No wallet, gas, or token approval is required.
       </p>
     </aside>
   );

@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { CentokLogo } from "@/components/branding/centok-logo";
 import { Button } from "@/components/ui/button";
 import { marketingNav } from "@/config/navigation";
-import { DemoEntryButton } from "@/features/marketing/components/demo-entry-button";
+import { AppEntryButton } from "@/features/marketing/components/app-entry-button";
 import { cn } from "@/lib/cn";
 
 export function MarketingHeader() {
@@ -53,16 +53,16 @@ export function MarketingHeader() {
           {nav}
         </nav>
         <div className="hidden items-center gap-2 md:flex">
-          <DemoEntryButton
+          <AppEntryButton
             className="inline-flex min-h-12 items-center justify-center rounded-full border border-border-light bg-white/35 px-6 py-3 text-sm font-bold text-text-dark transition hover:bg-white"
           >
             Sign in
-          </DemoEntryButton>
-          <DemoEntryButton
+          </AppEntryButton>
+          <AppEntryButton
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-7 py-3 text-sm font-bold text-white transition hover:bg-primary-hover"
           >
             Get started
-          </DemoEntryButton>
+          </AppEntryButton>
         </div>
         <Button
           variant="secondary"
@@ -85,18 +85,18 @@ export function MarketingHeader() {
             {nav}
           </nav>
           <div className="mt-8 grid gap-3">
-            <DemoEntryButton
+            <AppEntryButton
               className="inline-flex min-h-12 items-center justify-center rounded-full border border-border-light px-4 py-3 text-sm font-bold text-text-dark"
               onComplete={() => setOpen(false)}
             >
               Sign in
-            </DemoEntryButton>
-            <DemoEntryButton
+            </AppEntryButton>
+            <AppEntryButton
               className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-bold text-white"
               onComplete={() => setOpen(false)}
             >
               Get started
-            </DemoEntryButton>
+            </AppEntryButton>
           </div>
         </div>
       ) : null}

@@ -13,10 +13,10 @@ export default function ActivityPage() {
       <div>
         <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6F7A8F]">Account ledger</p>
         <h1 className="mt-2 text-3xl font-black text-[#111827]">Activity</h1>
-        <p className="mt-1 text-sm text-[#6F7A8F]">Simulated funding and Stock Token purchase records.</p>
+        <p className="mt-1 text-sm text-[#6F7A8F]">Funding and Stock Token purchase records.</p>
       </div>
       {activity.isLoading ? <LoadingState label="Loading activity" /> : null}
-      {activity.isError ? <ErrorState title="Activity unavailable" description="Reload or reset the demo state." onRetry={() => activity.refetch()} /> : <ActivityHistory />}
+      {activity.isError ? <ErrorState title="Activity unavailable" description="Reload or reset your workspace." onRetry={() => activity.refetch()} /> : <ActivityHistory />}
     </main>
   );
 }

@@ -9,14 +9,14 @@ export function PurchaseReview({ asset, quote }: { asset: Asset; quote: OrderQuo
     <div className="space-y-4">
       <div className="rounded-[18px] border border-[#D7E4F4] bg-[#F8FBFF] p-4">
         <h3 className="font-semibold text-[#111827]">Review {asset.symbol} Stock Token order</h3>
-        <p className="mt-1 text-sm text-[#6F7A8F]">Confirm the simulated order before any balance or portfolio state changes.</p>
+        <p className="mt-1 text-sm text-[#6F7A8F]">Confirm the order before any balance or portfolio state changes.</p>
       </div>
       <QuoteSummary
         variant="light"
         rows={[
           { label: "Company", value: `${asset.name} (${asset.symbol})` },
           { label: "Amount invested", value: quote.investmentAmount },
-          { label: "Mock price", value: quote.assetPrice },
+          { label: "Price", value: quote.assetPrice },
           { label: "Estimated quantity", value: `${quote.estimatedQuantity} ${asset.symbol} Token` },
           { label: "Execution fee", value: quote.executionFee },
           { label: "Total", value: quote.total, emphasis: true },
@@ -25,7 +25,7 @@ export function PurchaseReview({ asset, quote }: { asset: Asset; quote: OrderQuo
         ]}
       />
       <p className="text-xs leading-5 text-[#6F7A8F]">
-        Stock Tokens provide economic exposure in this demo and are not direct ownership of underlying shares.
+        Stock Tokens provide economic exposure and are not direct ownership of underlying shares.
       </p>
       <p className="sr-only">Estimated quantity: <QuantityDisplay quantity={quote.estimatedQuantity} /></p>
     </div>

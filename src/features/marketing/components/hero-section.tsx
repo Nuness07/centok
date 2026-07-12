@@ -1,7 +1,7 @@
 "use client";
 
 import { LiquidEtherBackground } from "./liquid-ether-background";
-import { DemoEntryButton } from "./demo-entry-button";
+import { AppEntryButton } from "./app-entry-button";
 import { PoweredByRobinhoodBadge } from "./powered-by-robinhood-badge";
 
 export function HeroSection() {
@@ -14,11 +14,11 @@ export function HeroSection() {
           Buy U.S. Stocks without bureaucracy
         </h1>
         <p className="mt-8 text-xl font-medium text-[#6f7487] md:text-2xl">A new way to use Stocks</p>
-        <DemoEntryButton
+        <AppEntryButton
           className="mt-10 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-bold text-white transition hover:bg-primary-hover"
         >
           Get started
-        </DemoEntryButton>
+        </AppEntryButton>
       </div>
     </section>
   );

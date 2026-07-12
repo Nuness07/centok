@@ -2,10 +2,10 @@
 
 import { ArrowRight, Loader2 } from "lucide-react";
 
-import { cn } from "@/lib/cn";
 import { useStartDefaultDemo } from "@/features/auth/hooks/use-auth";
+import { cn } from "@/lib/cn";
 
-export function DemoEntryButton({
+export function AppEntryButton({
   children = "Get started",
   className,
   onComplete
@@ -14,7 +14,7 @@ export function DemoEntryButton({
   className?: string;
   onComplete?: () => void;
 }) {
-  const startDemo = useStartDefaultDemo();
+  const start = useStartDefaultDemo();
 
   return (
     <button
@@ -22,11 +22,11 @@ export function DemoEntryButton({
       className={cn("inline-flex items-center justify-center gap-2 rounded-full bg-primary font-bold text-white transition hover:bg-primary-hover disabled:cursor-wait disabled:opacity-75", className)}
       onClick={() => {
         onComplete?.();
-        startDemo.mutate();
+        start.mutate();
       }}
-      disabled={startDemo.isPending}
+      disabled={start.isPending}
     >
-      {startDemo.isPending ? (
+      {start.isPending ? (
         <>
           <Loader2 size={18} className="animate-spin" aria-hidden="true" />
           Loading

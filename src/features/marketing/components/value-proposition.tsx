@@ -4,7 +4,7 @@ export function ValueProposition() {
   const values = [
     { icon: Layers, title: "Fewer fragmented steps", body: "A single flow replaces scattered accounts, transfers, and technical tools." },
     { icon: CreditCard, title: "Familiar local funding", body: "Add funds with a local-payment-style flow before reviewing the investment." },
-    { icon: Clock3, title: "Onchain availability", body: "The demo frames future settlement benefits without asking users to manage infrastructure." },
+    { icon: Clock3, title: "Onchain availability", body: "Centok frames settlement benefits without asking users to manage infrastructure." },
     { icon: ShieldCheck, title: "Transparent review", body: "Amounts, fees, estimates, and disclosures appear before confirmation." }
   ];
 
