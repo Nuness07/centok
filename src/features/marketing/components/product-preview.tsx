@@ -24,8 +24,8 @@ export function ProductPreview() {
         </div>
         <div className="mt-4 rounded-md bg-white p-4 text-text-dark">
           <div className="flex items-center justify-between text-sm">
-            <span>Apple Stock Token</span>
-            <strong>80.00 USDT</strong>
+            <span>Apple Inc. (AAPL)</span>
+            <strong>80.00 USD</strong>
           </div>
           <div className="mt-3 h-24 rounded bg-surface-muted" />
         </div>
