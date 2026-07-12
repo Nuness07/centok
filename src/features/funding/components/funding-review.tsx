@@ -1,5 +1,6 @@
 import type { FundingQuote } from "@/domain/models";
 import { QuoteSummary } from "@/components/financial/quote-summary";
+import { formatMoney } from "@/lib/currency";
 
 export function FundingReview({ quote }: { quote: FundingQuote }) {
   return (
@@ -15,7 +16,7 @@ export function FundingReview({ quote }: { quote: FundingQuote }) {
           { label: "Exchange rate", value: `${quote.exchangeRate} BRL per digital dollar` },
           { label: "Provider fee", value: quote.fee },
           { label: "Payment method", value: quote.paymentMethod },
-          { label: "Estimated received", value: quote.destinationAmount, emphasis: true },
+          { label: "Estimated received", value: formatMoney(quote.destinationAmount), emphasis: true },
           { label: "Quote expires", value: new Date(quote.expiresAt).toLocaleTimeString() }
         ]}
       />

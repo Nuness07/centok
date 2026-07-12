@@ -3,7 +3,6 @@
 import { demoConfig } from "@/config/demo";
 import { decimal } from "@/lib/decimal";
 import type { FundingQuote } from "@/domain/models";
-import { LocalizedMoneyDisplay } from "@/components/financial/localized-money-display";
 
 export function FundingAmountForm({
   amount,
@@ -32,13 +31,6 @@ export function FundingAmountForm({
         </div>
         <span className="mt-3 block text-xs text-[#6F7A8F]">Minimum {demoConfig.fundingMinimumBRL} BRL</span>
       </label>
-      <div className="rounded-[18px] border border-[#D7E4F4] bg-[#F8FBFF] p-4">
-        <span className="block text-sm font-bold text-[#111827]">I receive</span>
-        <strong className="mt-3 block text-3xl font-black text-[#111827]">
-          {quote ? <LocalizedMoneyDisplay money={quote.destinationAmount} localClassName="text-3xl font-black text-[#111827]" referenceClassName="text-[#6F7A8F]" /> : "Estimated balance"}
-        </strong>
-        <p className="mt-2 text-sm text-[#6F7A8F]">Payment method: PIX</p>
-      </div>
       {belowMinimum ? <p className="rounded-2xl border border-warning/20 bg-warning/10 p-3 text-sm font-semibold text-warning">Enter at least {demoConfig.fundingMinimumBRL} BRL to continue.</p> : null}
     </div>
   );
