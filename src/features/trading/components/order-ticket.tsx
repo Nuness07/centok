@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Decimal from "decimal.js";
-import type { Asset } from "@/domain/models";
+import type { Asset, Money } from "@/domain/models";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabButton } from "@/components/ui/tabs";
@@ -19,7 +19,7 @@ export function OrderTicket({
 }: {
   asset: Asset;
   onReview: (amount: string) => void;
-  onInsufficientFunds: (purchaseAmountUSDT: string, fundingAmountBRL: string) => void;
+  onInsufficientFunds: (purchaseAmountUSDT: string, fundingAmountBRL: string, availableBalance: Money) => void;
 }) {
   const [amount, setAmount] = useState(decimal("80.00").mul(investmentPreviewRates.BRL.exchangeRate).toFixed(2));
   const [error, setError] = useState<string | undefined>();
@@ -45,7 +45,7 @@ export function OrderTicket({
         ? demoConfig.fundingMinimumBRL
         : fundingAmountBRL;
       setError("Add funds to continue with this purchase.");
-      onInsufficientFunds(investmentUsdt.toFixed(2), requiredFundingAmountBRL);
+      onInsufficientFunds(investmentUsdt.toFixed(2), requiredFundingAmountBRL, availableBalance);
       return;
     }
     setError(undefined);

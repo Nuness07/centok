@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { Money } from "@/domain/models";
 import { Dialog } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { LoadingState } from "@/components/feedback/loading-state";
@@ -19,11 +20,13 @@ export function AddFundsDialog({
   open,
   onOpenChange,
   initialAmountBRL = demoConfig.defaultFundingAmountBRL,
+  purchaseContext,
   onComplete
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   initialAmountBRL?: string;
+  purchaseContext?: { availableBalance?: Money };
   onComplete?: () => void;
 }) {
   const [amount, setAmount] = useState<string>(initialAmountBRL);
@@ -56,7 +59,7 @@ export function AddFundsDialog({
     <Dialog open={open} onOpenChange={onOpenChange} title="Add funds" variant="light">
       {step === "entry" ? (
         <div className="space-y-5">
-          <FundingAmountForm amount={amount} onAmountChange={setAmount} quote={quote.data} />
+          <FundingAmountForm amount={amount} onAmountChange={setAmount} quote={quote.data} purchaseContext={purchaseContext} />
           {quote.isError && !expired ? <FundingError message={quote.error instanceof Error ? quote.error.message : "Could not prepare quote."} onRetry={() => quote.refetch()} /> : null}
           <div className="flex justify-end gap-3">
             <Button variant="ghost" className="rounded-full text-[#6F7A8F]" onClick={() => onOpenChange(false)}>Cancel</Button>

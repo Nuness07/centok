@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ErrorState } from "@/components/feedback/error-state";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { demoConfig } from "@/config/demo";
+import type { Money } from "@/domain/models";
 import { AddFundsDialog } from "@/features/funding/components/add-funds-dialog";
 import { saveFundingReturnContext, clearFundingReturnContext } from "@/features/funding/services/funding-return-context";
 import { OrderTicket } from "@/features/trading/components/order-ticket";
@@ -21,6 +22,7 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
   const [fundingOpen, setFundingOpen] = useState(false);
   const [purchaseAmount, setPurchaseAmount] = useState<string>(demoConfig.defaultPurchaseAmountUSDT);
   const [fundingAmountBRL, setFundingAmountBRL] = useState<string>(demoConfig.defaultFundingAmountBRL);
+  const [fundingAvailableBalance, setFundingAvailableBalance] = useState<Money | undefined>();
   const [returnToPurchase, setReturnToPurchase] = useState(false);
 
   useEffect(() => {
@@ -87,9 +89,10 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
             setPurchaseAmount(amount);
             setPurchaseOpen(true);
           }}
-          onInsufficientFunds={(amount, fundingAmount) => {
+          onInsufficientFunds={(amount, fundingAmount, availableBalance) => {
             setPurchaseAmount(amount);
             setFundingAmountBRL(fundingAmount);
+            setFundingAvailableBalance(availableBalance);
             setReturnToPurchase(true);
             saveFundingReturnContext(asset.data.symbol, amount);
             setFundingOpen(true);
@@ -104,9 +107,10 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
               setPurchaseAmount(amount);
               setPurchaseOpen(true);
             }}
-            onInsufficientFunds={(amount, fundingAmount) => {
+            onInsufficientFunds={(amount, fundingAmount, availableBalance) => {
               setPurchaseAmount(amount);
               setFundingAmountBRL(fundingAmount);
+              setFundingAvailableBalance(availableBalance);
               setReturnToPurchase(true);
               saveFundingReturnContext(asset.data.symbol, amount);
               setFundingOpen(true);
@@ -124,6 +128,7 @@ export function AssetDashboardLayout({ symbol = demoConfig.defaultSymbol, startI
         open={fundingOpen}
         onOpenChange={setFundingOpen}
         initialAmountBRL={fundingAmountBRL}
+        purchaseContext={returnToPurchase ? { availableBalance: fundingAvailableBalance } : undefined}
         onComplete={() => {
           if (returnToPurchase) {
             clearFundingReturnContext();
