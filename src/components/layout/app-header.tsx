@@ -4,12 +4,13 @@ import { Plus } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { CentokLogo } from "@/components/branding/centok-logo";
 import { Button } from "@/components/ui/button";
-import { LocalizedMoneyDisplay } from "@/components/financial/localized-money-display";
 import { LoadingState } from "@/components/feedback/loading-state";
 import { appNav } from "@/config/navigation";
 import { useAvailableBalance } from "@/features/portfolio/hooks/use-balance";
 import { UserMenu } from "@/features/auth/components/user-menu";
 import { cn } from "@/lib/cn";
+import { formatMoney } from "@/lib/currency";
+import { asUsdtReference, convertMoneyForDisplay } from "@/lib/local-money";
 
 export function AppHeader() {
   const balance = useAvailableBalance();
@@ -41,9 +42,9 @@ export function AppHeader() {
           })}
         </nav>
         <div className="flex items-center gap-2">
-          <div className="hidden min-w-36 rounded-full border border-[#D7E4F4] bg-[#F7FAFF] px-4 py-2 text-sm md:block">
-            <span className="block text-[11px] font-semibold uppercase tracking-[0.12em] text-[#7B869B]">Available</span>
-            {balance.isLoading ? <LoadingState label="Loading balance" /> : balance.data ? <LocalizedMoneyDisplay money={balance.data} localClassName="font-semibold text-[#0B1220]" /> : null}
+          <div className="hidden items-center gap-2 rounded-full border border-[#D7E4F4] bg-[#F7FAFF] px-3 py-2 text-sm md:flex">
+            <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#7B869B]">Available</span>
+            {balance.isLoading ? <LoadingState label="Loading balance" /> : balance.data ? <AvailableInline amount={balance.data} /> : null}
           </div>
           <Button onClick={() => window.dispatchEvent(new Event("centok:add-funds"))} className="min-h-10 rounded-full px-4">
             <Plus size={16} aria-hidden="true" />
@@ -53,5 +54,22 @@ export function AppHeader() {
         </div>
       </div>
     </header>
+  );
+}
+
+function AvailableInline({ amount }: { amount: { amount: string; currency: "ARS" | "BRL" | "CLP" | "COP" | "MXN" | "PEN" | "USD" | "USDT" } }) {
+  const local = convertMoneyForDisplay(amount, "BRL");
+  const reference = asUsdtReference(amount);
+
+  return (
+    <span className="flex items-baseline gap-2 whitespace-nowrap">
+      <span className="font-black text-[#0B1220]">{formatMoney(local)}</span>
+      {reference ? (
+        <span className="text-xs font-semibold text-[#7B869B]">
+          ≈ {formatMoney(reference).replace("USDT", "USD")}
+          <sup className="text-[0.65em]">T</sup>
+        </span>
+      ) : null}
+    </span>
   );
 }

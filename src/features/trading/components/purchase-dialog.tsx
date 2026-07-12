@@ -33,13 +33,14 @@ export function PurchaseDialog({
 
   const message = submit.error instanceof Error ? submit.error.message : "The simulated order could not be completed.";
   const expired = quote.error instanceof Error && quote.error.name === "QuoteExpiredError";
+  const readyForReview = quote.data && !submit.isPending && !submit.isSuccess && !submit.isError;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange} title="Review order" variant="light">
       {quote.isLoading ? <LoadingState label="Preparing quote" /> : null}
-      {quote.isError && expired ? <PurchaseExpired onRefresh={() => quote.refetch()} /> : null}
-      {quote.isError && !expired ? <PurchaseError message={quote.error instanceof Error ? quote.error.message : "Could not prepare quote."} onRetry={() => quote.refetch()} /> : null}
-      {quote.data && !submit.isPending && !submit.isSuccess && !submit.isError ? (
+      {!submit.isPending && !submit.isSuccess && quote.isError && expired ? <PurchaseExpired onRefresh={() => quote.refetch()} /> : null}
+      {!submit.isPending && !submit.isSuccess && quote.isError && !expired ? <PurchaseError message={quote.error instanceof Error ? quote.error.message : "Could not prepare quote."} onRetry={() => quote.refetch()} /> : null}
+      {readyForReview ? (
         <div className="space-y-5">
           <PurchaseReview asset={asset} quote={quote.data} />
           <div className="flex justify-end gap-3">
@@ -49,7 +50,6 @@ export function PurchaseDialog({
         </div>
       ) : null}
       {submit.isPending ? <PurchasePending /> : null}
-      {submit.isError ? <PurchaseError message={message} onRetry={() => quote.data && submit.mutate(quote.data.id)} /> : null}
       {submit.isSuccess && quote.data ? (
         <PurchaseSuccess
           asset={asset}
@@ -61,6 +61,7 @@ export function PurchaseDialog({
           }}
         />
       ) : null}
+      {!submit.isSuccess && submit.isError ? <PurchaseError message={message} onRetry={() => quote.data && submit.mutate(quote.data.id)} /> : null}
     </Dialog>
   );
 }

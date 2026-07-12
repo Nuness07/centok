@@ -3,10 +3,10 @@ import type { Asset } from "@/domain/models";
 const ASSET_LOGOS = {
   AAPL: "https://cdn.simpleicons.org/apple/000000?viewbox=auto",
   AMD: "https://cdn.simpleicons.org/amd/ED1C24?viewbox=auto",
-  AMZN: "https://cdn.simpleicons.org/amazon/FF9900?viewbox=auto",
+  AMZN: "https://www.google.com/s2/favicons?domain=amazon.com&sz=128",
   GOOGL: "https://cdn.simpleicons.org/google/4285F4?viewbox=auto",
   META: "https://cdn.simpleicons.org/meta/0866FF?viewbox=auto",
-  MSFT: "https://cdn.simpleicons.org/microsoft/5E5E5E?viewbox=auto",
+  MSFT: "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
   NVDA: "https://cdn.simpleicons.org/nvidia/76B900?viewbox=auto",
   TSLA: "https://cdn.simpleicons.org/tesla/CC0000?viewbox=auto",
   COIN: "https://cdn.simpleicons.org/coinbase/0052FF?viewbox=auto",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
 
 export function AssetLogo({
@@ -16,6 +16,10 @@ export function AssetLogo({
 }) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(src) && !failed;
+
+  useEffect(() => {
+    setFailed(false);
+  }, [src, symbol]);
 
   return (
     <span className={cn("flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white text-xs font-black text-[#0B1220]", className)}>
