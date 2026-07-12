@@ -11,7 +11,8 @@ export function Dialog({
   title,
   children,
   className,
-  variant = "light"
+  variant = "light",
+  hideHeader = false
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -19,6 +20,7 @@ export function Dialog({
   children: React.ReactNode;
   className?: string;
   variant?: "light" | "dark";
+  hideHeader?: boolean;
 }) {
   useEffect(() => {
     if (!open) return;
@@ -38,19 +40,30 @@ export function Dialog({
         aria-modal="true"
         aria-label={title}
         className={cn(
-          "max-h-[90vh] w-full max-w-xl overflow-auto shadow-panel",
+          "relative max-h-[90vh] w-full max-w-xl overflow-auto shadow-panel",
           variant === "dark"
             ? "rounded-[24px] border border-white/[0.08] bg-[#11141A] p-5 text-white"
             : "rounded-lg border border-border-light bg-white p-5 text-text-dark",
           className
         )}
       >
-        <div className="mb-4 flex items-center justify-between gap-4">
-          <h2 className={cn("text-lg font-semibold", variant === "dark" ? "text-white" : "text-text-dark")}>{title}</h2>
-          <Button variant="ghost" className={cn("h-9 w-9 rounded-full p-0", variant === "dark" ? "text-white hover:bg-white/[0.08]" : "text-text-dark")} aria-label="Close" onClick={() => onOpenChange(false)}>
+        {hideHeader ? (
+          <Button
+            variant="ghost"
+            className={cn("absolute right-4 top-4 z-10 h-9 w-9 rounded-full p-0", variant === "dark" ? "text-white hover:bg-white/[0.08]" : "text-text-dark")}
+            aria-label="Close"
+            onClick={() => onOpenChange(false)}
+          >
             <X size={18} />
           </Button>
-        </div>
+        ) : (
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <h2 className={cn("text-lg font-semibold", variant === "dark" ? "text-white" : "text-text-dark")}>{title}</h2>
+            <Button variant="ghost" className={cn("h-9 w-9 rounded-full p-0", variant === "dark" ? "text-white hover:bg-white/[0.08]" : "text-text-dark")} aria-label="Close" onClick={() => onOpenChange(false)}>
+              <X size={18} />
+            </Button>
+          </div>
+        )}
         {children}
       </section>
     </div>

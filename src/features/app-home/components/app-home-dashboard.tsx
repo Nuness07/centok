@@ -136,7 +136,7 @@ function PortfolioRow({
 }>) {
   return (
     <article className="grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-[20px] border border-[#D7E4F4] bg-white p-3">
-      <AssetLogo symbol={symbol} src={logoUrl} className="h-11 w-11 bg-[#E8EEF8]" />
+      <AssetLogo symbol={symbol} src={logoUrl} className="h-11 w-11 bg-[#E8EEF8]" showRobinhoodBadge={!muted} />
       <div className="min-w-0">
         <h3 className="truncate font-bold text-[#111827]">{label}</h3>
         <p className="truncate text-sm text-[#6F7A8F]">

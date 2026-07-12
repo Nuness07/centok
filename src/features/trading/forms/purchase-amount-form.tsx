@@ -44,7 +44,7 @@ export function PurchaseAmountForm({
         </div>
         <div className="flex min-w-0 items-center justify-between gap-3">
           <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#D7E4F4] bg-white px-3 py-2 text-sm font-bold text-[#111827]">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-black text-white">U</span>
+            <BrazilFlagIcon />
             {" "}BRL
           </span>
           <input
@@ -91,5 +91,14 @@ export function PurchaseAmountForm({
       </dl>
       {error ? <p className="rounded-2xl border border-negative/20 bg-negative/10 p-3 text-sm font-semibold text-negative">{error}</p> : null}
     </div>
+  );
+}
+
+function BrazilFlagIcon() {
+  return (
+    <span className="relative flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#159B48]" aria-hidden="true">
+      <span className="absolute h-4 w-4 rotate-45 bg-[#FFDF00]" />
+      <span className="absolute h-2.5 w-2.5 rounded-full bg-[#002776]" />
+    </span>
   );
 }
