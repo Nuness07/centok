@@ -16,8 +16,6 @@ export default function HomePage() {
       <HowItWorks />
       <InvestmentCalculatorSection />
       <ProcessComparison />
-      <InfrastructureSection />
-      <SecuritySection />
       <FinalCta />
       <ProductDisclaimer />
     </div>

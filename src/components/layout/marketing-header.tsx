@@ -48,6 +48,7 @@ export function MarketingHeader() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+        <CentokLogo className="text-text-dark" />
         <nav className="hidden items-center gap-9 md:flex" aria-label="Marketing navigation">
           {nav}
         </nav>
@@ -102,5 +103,4 @@ export function MarketingHeader() {
     </header>
   );
 }
-
 
